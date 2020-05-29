@@ -1,0 +1,5 @@
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"marketId":"2","jobType":"REPORT","operation":"DELETE","cron":"0 0/1 * 1/1 * ? *"}' \
+  http://localhost:8080/jobs
+  
