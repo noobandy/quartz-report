@@ -2,7 +2,6 @@ package in.anandm.report.services;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -33,8 +32,6 @@ public class FSReportStorageService implements ReportStorageService {
 		try(BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(outFile))) {
 			
 			mapper.writeValue(bos, data);
-		} catch (FileNotFoundException e) {
-			throw new StorageException(e);
 		} catch (IOException e) {
 			throw new StorageException(e);
 		}

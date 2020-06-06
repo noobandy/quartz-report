@@ -1,6 +1,5 @@
 package in.anandm.report.services;
 
-import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -31,11 +30,7 @@ public class S3ReportStorageService implements ReportStorageService {
 	public void writeReportData(ReportData data) throws StorageException {
 		try {
 			s3.putObject(bucketName, fileName, objectMapper.writeValueAsString(data));
-		} catch (AmazonServiceException e) {
-			throw new StorageException(e);
-		} catch (SdkClientException e) {
-			throw new StorageException(e);
-		} catch (JsonProcessingException e) {
+		} catch (SdkClientException|JsonProcessingException e) {
 			throw new StorageException(e);
 		}
 	}

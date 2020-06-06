@@ -30,10 +30,9 @@ public class ReportJob extends QuartzJobBean {
 		
 		JobDataMap dataMap = context.getMergedJobDataMap();
 		
-		Long marketId = dataMap.getLong("marketId");
 		
 		try {
-			reportStorageService.writeReportData(reportDataService.getReportData(marketId));
+			reportStorageService.writeReportData(reportDataService.getReportData(dataMap.getWrappedMap()));
 		} catch (StorageException e) {
 			throw new JobExecutionException(e);
 		}
