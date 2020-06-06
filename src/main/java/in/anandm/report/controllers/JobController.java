@@ -14,6 +14,7 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class JobController {
 	private Scheduler scheduler;
 
 	@PostMapping("/jobs")
-	public @ResponseBody JobResponse scheduleJob(JobRequest request)
+	public @ResponseBody JobResponse scheduleJob(@RequestBody JobRequest request)
 			throws SchedulerException {
 
 		
